@@ -76,5 +76,3 @@ class MovableObject extends DrawableObject{
     }
 
 }
-
-// offset letzter stand: rote markierung. -> offset muss jedem objekt individuell hinzugefügt werden

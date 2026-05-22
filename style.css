@@ -5,7 +5,9 @@ body {
     align-items: center;
     background-color: #F97B24;
     background-image: url(./img/main_background_desert.png);
-    background-position: left;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     font-family: 'zabras', Arial, Helvetica, sans-serif;
     color: black;
     text-shadow: 2px 2px 2px #F97B24;
