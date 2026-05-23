@@ -1,0 +1,47 @@
+body {
+    display: flex;
+    justify-content: unset;
+    align-items: unset;
+    padding-bottom: 42px;
+}
+
+.legal-notice-main-container {
+    padding-bottom: 42px;
+    padding-top: 18px !important;
+    padding: 32px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #972918;
+    padding-left: 32px;
+}
+
+header a {
+    
+    padding-right: 24px;
+}
+
+h1 {
+    margin-bottom: 0px;
+}
+
+h2 {
+    margin: 0px;
+    margin-bottom: 10px;
+    font-size: 44px;
+}
+
+p {
+    margin: 0px;
+}
+
+.title {
+    font-size: 32px
+}
+
+.text {
+    font-size: 24px;
+}

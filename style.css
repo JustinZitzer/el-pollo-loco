@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -13,7 +14,7 @@ body {
     background-color: #F97B24;
     background-image: url(./img/main_background_desert.png);
     background-position: center;
-    background-size: cover; 
+    background-size: cover;
     background-repeat: no-repeat;
     font-family: 'zabras', Arial, Helvetica, sans-serif;
     color: black;
@@ -32,9 +33,29 @@ h1 {
     letter-spacing: 3px;
 }
 
+.back-arrow {
+    text-decoration: none;
+    font-size: 60px;
+    color: black;
+    transition: 0.2s ease;
+}
+
+.back-arrow:hover {
+    color: #F97B24;
+    text-shadow: 2px 2px 2px black;
+    transform: translateX(-4px) scale(1.1);
+}
+
+.legal-notice-text {
+    font-size: 30px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
 @font-face {
-  font-family: 'Zabras';
-  src: url(./fonts/zabars.ttf) format('truetype');
+    font-family: 'Zabras';
+    src: url(./fonts/zabars.ttf) format('truetype');
 }
 
 @media only screen and (max-width: 720px) {
@@ -52,4 +73,3 @@ h1 {
         display: none;
     }
 }
-

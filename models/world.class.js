@@ -34,19 +34,19 @@ class World {
             this.throwableObjects.push(bottle);
         }
     }
-    
+
 
     checkCollisions() {
         this.level.enemies.forEach(enemy => {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
-            } 
+            }
         });
     }
 
     draw() {
-        this.ctx.clearRect(0,0, canvas.width, canvas.height)
+        this.ctx.clearRect(0, 0, canvas.width, canvas.height)
 
         this.ctx.translate(this.camera_x, 0);
 
@@ -58,13 +58,13 @@ class World {
         this.addToMap(this.statusBar);
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.throwableObjects);  
-        
+        this.addObjectsToMap(this.throwableObjects);
+
         this.ctx.translate(-this.camera_x, 0);
-        
+
 
         let self = this;
-        requestAnimationFrame(function() {
+        requestAnimationFrame(function () {
             self.draw();
         });
     }

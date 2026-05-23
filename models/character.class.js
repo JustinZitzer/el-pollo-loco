@@ -30,9 +30,9 @@ class Character extends MovableObject {
         'img/2_character_pepe/5_dead/D-57.png',
     ];
     IMAGES_HURT = [
-    'img/2_character_pepe/4_hurt/H-41.png',
-    'img/2_character_pepe/4_hurt/H-42.png',
-    'img/2_character_pepe/4_hurt/H-43.png',
+        'img/2_character_pepe/4_hurt/H-41.png',
+        'img/2_character_pepe/4_hurt/H-42.png',
+        'img/2_character_pepe/4_hurt/H-43.png',
     ];
     world;
     offset = {
@@ -59,7 +59,7 @@ class Character extends MovableObject {
                 this.moveRight();
                 this.otherDirection = false;
             }
-            
+
             if (this.world.keyboard.LEFT && this.x > 0) {
                 this.moveLeft();
                 this.otherDirection = true;
@@ -73,7 +73,7 @@ class Character extends MovableObject {
 
         }, 1000 / 60);
 
-        setInterval( () => {
+        setInterval(() => {
 
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);

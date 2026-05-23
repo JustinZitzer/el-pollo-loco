@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,37 +9,40 @@
     <link rel="shortcut icon" href="./img/6_salsa_bottle/1_salsa_bottle_on_ground.png" type="image/x-icon">
     <title>El pollo loco</title>
 </head>
+
 <body onload="init()"> <!-- delete init onload - if start animation is done -->
+    <a class="back-arrow legal-notice-text" href="./legal_notice.html">Legal notice</a>
     <h1>El pollo loco</h1>
     <div id="fullscreen">
-    <canvas id="canvas" width="720" height="480">
-    </canvas>
+        <canvas id="canvas" width="720" height="480">
+        </canvas>
     </div>
-    
+
     <!-- Core Engine -->
-<script src="./models/drawable-object.class.js"></script>
-<script src="./models/movable-object.class.js"></script>
-<script src="./models/throwable-object.class.js"></script>
+    <script src="./models/drawable-object.class.js"></script>
+    <script src="./models/movable-object.class.js"></script>
+    <script src="./models/throwable-object.class.js"></script>
 
-<!-- Game Objects -->
-<script src="./models/character.class.js"></script>
-<script src="./models/chicken.class.js"></script>
-<script src="./models/cloud.class.js"></script>
-<script src="./models/background-object.class.js"></script>
-<script src="./models/status-bar.class.js"></script>
-<script src="./models/endboss.class.js"></script>
+    <!-- Game Objects -->
+    <script src="./models/character.class.js"></script>
+    <script src="./models/chicken.class.js"></script>
+    <script src="./models/cloud.class.js"></script>
+    <script src="./models/background-object.class.js"></script>
+    <script src="./models/status-bar.class.js"></script>
+    <script src="./models/endboss.class.js"></script>
 
-<!-- World / Level System -->
-<script src="./models/level.class.js"></script>
-<script src="./models/world.class.js"></script>
+    <!-- World / Level System -->
+    <script src="./models/level.class.js"></script>
+    <script src="./models/world.class.js"></script>
 
-<!-- Input -->
-<script src="./models/keyboard.class.js"></script>
+    <!-- Input -->
+    <script src="./models/keyboard.class.js"></script>
 
-<!-- Levels -->
-<script src="./levels/level1.js"></script>
+    <!-- Levels -->
+    <script src="./levels/level1.js"></script>
 
-<!-- Game Start -->
-<script src="./js/game.js"></script>
+    <!-- Game Start -->
+    <script src="./js/game.js"></script>
 </body>
+
 </html>

@@ -38,9 +38,9 @@ class Endboss extends MovableObject {
         let i = 0;
         setInterval(() => {
             if (i < 10) {
-                this.playAnimation(this.IMAGES_SPAWNING);    
+                this.playAnimation(this.IMAGES_SPAWNING);
             } else {
-                this.playAnimation(this.IMAGES_WALKING);    
+                this.playAnimation(this.IMAGES_WALKING);
             }
             i++;
 
