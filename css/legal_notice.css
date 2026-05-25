@@ -3,12 +3,18 @@ body {
     justify-content: unset;
     align-items: unset;
     padding-bottom: 42px;
+    background-color: #914517;
 }
 
 .legal-notice-main-container {
+    display: flex;
     padding-bottom: 42px;
     padding-top: 18px !important;
     padding: 32px;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Arial", sans-serif;
+    text-shadow: none;
 }
 
 header {
@@ -16,16 +22,17 @@ header {
     justify-content: space-between;
     align-items: flex-start;
     background-color: #972918;
-    padding-left: 32px;
 }
 
 header a {
-    
+    display: flex;
+    justify-content: flex-end;
     padding-right: 24px;
 }
 
 h1 {
-    margin-bottom: 0px;
+    margin: 20px;
+    padding-left: 32px;
 }
 
 h2 {
