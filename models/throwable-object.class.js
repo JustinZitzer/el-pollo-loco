@@ -1,4 +1,4 @@
-class ThrowableObect extends MovableObject {
+class ThrowableObject extends MovableObject {
 
     IMAGES_SALSA_BOTTLE = [
         'img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
