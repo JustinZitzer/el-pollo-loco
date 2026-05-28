@@ -85,7 +85,7 @@ header {
     right: 10px;
     width: 200px;
     height: 200px;
-    animation: float 3s ease-in-out infinite;
+    animation: float 3s ease-in-out;
 }
 
 .header-second-coin {
@@ -94,7 +94,7 @@ header {
     right: -24px;
     width: 150px;
     height: 150px;
-    animation: float 3s ease-in-out infinite;
+    animation: float 3s ease-in-out;
     animation-delay: 0.5s;
 }
 
@@ -152,19 +152,26 @@ footer {
 }
 
 @keyframes float {
-    0% {
+    0%, 100% {
         transform: translateY(0px);
     }
 
     50% {
         transform: translateY(-15px);
-        /* Adjust distance as needed */
-    }
-
-    100% {
-        transform: translateY(0px);
     }
 }
+
+@keyframes juicyIdle {
+  0%, 100% {
+    transform: scale(1, 1);
+  }
+
+  50% {
+    transform: scale(1.08, 0.92);
+  }
+}
+
+    /* animation: juicyIdle 450ms forwards ease-out;            später für salsa bottle animation            */
 
 @media only screen and (max-width: 720px) {
     canvas {
