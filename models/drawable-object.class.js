@@ -18,7 +18,6 @@ class DrawableObject {
         } catch (error) {
             console.warn('Error loading image', error);
             console.log('Could not load image', this.img.scr);
-
         }
     }
 
