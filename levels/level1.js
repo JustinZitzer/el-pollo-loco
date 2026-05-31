@@ -38,11 +38,16 @@ function initLevel() {
         ],
 
         [
-            new CollectibleObject('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png', 300),
-            new CollectibleObject('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png', 600),
-            new CollectibleObject('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png', 900),
-            new CollectibleObject('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png', 1200),
-            new CollectibleObject('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png', 1500),
+            new CollectibleObject('bottle', 300),
+            new CollectibleObject('bottle', 600),
+            new CollectibleObject('bottle', 900),
+            new CollectibleObject('bottle', 1200),
+            new CollectibleObject('bottle', 1500),
+            new CollectibleObject('coin', 400),
+            new CollectibleObject('coin', 700),
+            new CollectibleObject('coin', 1000),
+            new CollectibleObject('coin', 1300),
+            new CollectibleObject('coin', 1700),
         ],
         
     );
