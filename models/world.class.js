@@ -8,6 +8,7 @@ class World {
     statusBar = new StatusBar();
     throwableObjects = [];
     collectibleObjects = new CollectibleObject();
+    coins = [];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -26,6 +27,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
+            this.checkCollectibleObjects();
         }, 200);
     }
 
@@ -44,6 +46,35 @@ class World {
                 this.statusBar.setPercentage(this.character.energy);
             }
         });
+    }
+
+    checkCollectibleObjects() {
+        this.checkCollectibleCoin();
+        this.checkCollectibleSalsaBottle();
+    
+}
+
+    checkCollectibleCoin() {
+        this.level.coins.forEach((coin, index) => {
+        if (this.character.isColliding(collectibleObjects)) {
+            this.character.coinCount++;
+            this.level.coins.splice(index, 1);
+            console.log(coin);
+        console.log('hello');
+            
+        }
+        console.log(this.character.coinCount);
+        
+    });
+    }
+
+    checkCollectibleSalsaBottle() {
+        this.level.salsaBottles.forEach((bottle, index) => {
+        if (this.character.isColliding(bottle)) {
+            this.character.bottleCount++;
+            this.level.salsaBottles.splice(index, 1);
+        }
+    });
     }
 
     draw() {
