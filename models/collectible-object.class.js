@@ -1,6 +1,12 @@
 class CollectibleObject extends MovableObject {
     height = 100; 
     width = 100;
+    offset = {
+        top: 88,
+        left: 40,
+        right: 40,
+        bottom: 85,
+    }
 
     constructor(type, x) {
         super();
