@@ -7,8 +7,8 @@ class World {
     camera_x = 0;
     statusBar = new StatusBar();
     throwableObjects = [];
-    collectibleObjects = new CollectibleObject();
-    coins = [];
+    salsaBottleCount = 0;
+    coinCount = 0;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -27,8 +27,9 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
-            this.checkCollectibleObjects();
         }, 200);
+        this.checkCollectibleObjects();
+
     }
 
     checkThrowObjects() {
@@ -49,32 +50,36 @@ class World {
     }
 
     checkCollectibleObjects() {
-        this.checkCollectibleCoin();
-        this.checkCollectibleSalsaBottle();
-    
-}
+        setInterval(() => {
+            this.checkCollectibleCoin();
+            this.checkCollectibleSalsaBottle();
+        }, 1000 / 60);
+
+
+    }
 
     checkCollectibleCoin() {
         this.level.coins.forEach((coin, index) => {
-        if (this.character.isColliding(collectibleObjects)) {
-            this.character.coinCount++;
-            this.level.coins.splice(index, 1);
-            console.log(coin);
-        console.log('hello');
-            
-        }
-        console.log(this.character.coinCount);
-        
-    });
+            if (this.character.isColliding(coin)) { // continue here
+                this.character.coinCount++;
+                this.level.coins.splice(index, 1);
+                console.log('COINS:', this.character.coinCount);
+                
+            }
+        });
     }
 
     checkCollectibleSalsaBottle() {
         this.level.salsaBottles.forEach((bottle, index) => {
-        if (this.character.isColliding(bottle)) {
-            this.character.bottleCount++;
-            this.level.salsaBottles.splice(index, 1);
-        }
-    });
+            if (this.character.isColliding(bottle)) {
+
+                this.character.salsaBottleCount++;
+
+                this.level.salsaBottles.splice(index, 1);
+                console.log('BOTTLES:', this.character.salsaBottleCount);
+
+            }
+        });
     }
 
     draw() {
@@ -88,16 +93,18 @@ class World {
         this.addObjectsToMap(this.level.clouds);
         this.addToMap(this.character);
 
+
         this.ctx.translate(-this.camera_x, 0);
         // ------ space for fixed objects ------
 
         this.addToMap(this.statusBar);
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.collectibleObjects);
+
+        this.addObjectsToMap(this.level.salsaBottles);
+        this.addObjectsToMap(this.level.coins);
 
         this.addObjectsToMap(this.throwableObjects);
-
 
 
         this.ctx.translate(-this.camera_x, 0);

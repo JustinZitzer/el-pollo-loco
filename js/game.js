@@ -37,7 +37,6 @@ document.addEventListener("keydown", (event) => {
         keyboard.D = true;
     }
 
-    console.log(event);
 });
 
 document.addEventListener("keyup", (event) => {
@@ -64,8 +63,6 @@ document.addEventListener("keyup", (event) => {
     if (event.keyCode == 68) {
         keyboard.D = false;
     }
-
-    console.log(event);
 });
 
 function fullscreen() { // need to be implemented

@@ -36,18 +36,19 @@ function initLevel() {
             new BackgroundObject('img/5_background/layers/2_second_layer/2.png', 720 * 3),
             new BackgroundObject('img/5_background/layers/1_first_layer/2.png', 720 * 3),
         ],
-
         [
-            new CollectibleObject('bottle', 300),
-            new CollectibleObject('bottle', 600),
-            new CollectibleObject('bottle', 900),
-            new CollectibleObject('bottle', 1200),
-            new CollectibleObject('bottle', 1500),
-            new CollectibleObject('coin', 400),
-            new CollectibleObject('coin', 700),
-            new CollectibleObject('coin', 1000),
-            new CollectibleObject('coin', 1300),
-            new CollectibleObject('coin', 1700),
+            new SalsaBottle('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png', 400, 335),
+            new SalsaBottle('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png', 800, 335),
+            new SalsaBottle('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png', 900, 335),
+            new SalsaBottle('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png', 1200, 335),
+            new SalsaBottle('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png', 1500, 335),
+        ],
+        [
+            new Coin('img/8_coin/coin_1.png', 300, 335),
+            new Coin('img/8_coin/coin_1.png', 700, 335),
+            new Coin('img/8_coin/coin_1.png', 1000, 335),
+            new Coin('img/8_coin/coin_1.png', 1300, 335),
+            new Coin('img/8_coin/coin_1.png', 1600, 335),
         ],
         
     );
