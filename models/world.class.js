@@ -60,6 +60,7 @@ class World {
 
     checkCollectibleCoin() {
         this.level.coins.forEach((coin, index) => {
+            coin.update();
             if (this.character.isColliding(coin)) { // continue here
                 this.character.coinCount++;
                 this.level.coins.splice(index, 1);
@@ -71,6 +72,7 @@ class World {
 
     checkCollectibleSalsaBottle() {
         this.level.salsaBottles.forEach((bottle, index) => {
+            bottle.update();
             if (this.character.isColliding(bottle)) {
 
                 this.character.salsaBottleCount++;

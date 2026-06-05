@@ -146,6 +146,12 @@ footer {
     background-color: #8F4A41;
 }
 
+/* animations */
+
+.float-animation {
+    animation: float 3s ease-in-out;
+}
+
 @font-face {
     font-family: 'Zabras';
     src: url(./fonts/zabars.ttf) format('truetype');
