@@ -2,6 +2,7 @@ class StatusBar extends DrawableObject {
     width = 130;
     height = 60;
     percentage = 100;
+    percentageCollectibleObject = 0;
 
     IMAGES_HEALTH = [
         'img/7_statusbars/1_statusbar/2_statusbar_health/blue/0.png',
@@ -44,7 +45,7 @@ class StatusBar extends DrawableObject {
         this.loadImages(this.images);
         this.x = 20;
         this.y = 10;
-        this.setPercentage(100);
+        this.validatePercentage();
     }
 
     getImagesByType(type) {
@@ -60,10 +61,23 @@ class StatusBar extends DrawableObject {
         }
     }
 
-    //setPercentage(50);
+    validatePercentage() {
+        if (this.type === "health" || this.type === "endboss") {
+            this.setPercentage(100);
+        } else {
+            this.setCollectibleObjectPercentage(0);
+        }
+    }
+
     setPercentage(percentage) {
         this.percentage = percentage;
         let path = this.images[this.resolveImageIndex()]
+        this.img = this.imageCache[path];
+    }
+
+    setCollectibleObjectPercentage(percentageCollectibleObject) {
+        this.percentageCollectibleObject = percentageCollectibleObject;
+        let path = this.images[this.resolveCollectibleObjectImageIndex()]
         this.img = this.imageCache[path];
     }
 
@@ -82,5 +96,51 @@ class StatusBar extends DrawableObject {
             return 0;
         }
 
+    }
+
+    resolveCollectibleObjectImageIndex() {
+        if (this.type === "coin") {
+
+            if (this.percentageCollectibleObject == 0) {
+                return 0;
+            } else if (this.percentageCollectibleObject == 1) {
+                return 1;
+            } else if (this.percentageCollectibleObject == 2) {
+                return 2;
+            } else if (this.percentageCollectibleObject == 3) {
+                return 3;
+            } else if (this.percentageCollectibleObject == 4) {
+                return 4;
+            } else if (this.percentageCollectibleObject == 5) {
+                return 4;
+            } else if (this.percentageCollectibleObject == 6) {
+                return 5;
+            }
+        }
+
+        if (this.type === "bottle") {
+
+            if (this.percentageCollectibleObject == 0) {
+                return 0;
+            } else if (this.percentageCollectibleObject == 1) {
+                return 1;
+            } else if (this.percentageCollectibleObject == 2) {
+                return 2;
+            } else if (this.percentageCollectibleObject == 3) {
+                return 2;
+            } else if (this.percentageCollectibleObject == 4) {
+                return 3;
+            } else if (this.percentageCollectibleObject == 5) {
+                return 3;
+            } else if (this.percentageCollectibleObject == 6) {
+                return 4;
+            } else if (this.percentageCollectibleObject == 7) {
+                return 4;
+            } else if (this.percentageCollectibleObject == 8) {
+                return 5;
+            }
+        }
+
+        return 0;
     }
 }

@@ -37,6 +37,12 @@ class World {
     }
 
     initStatusBars() {
+        this.setPostionStatusBars();
+        this.test();
+        
+    }
+
+    setPostionStatusBars() {
         this.statusBarHealth.x = 20;
         this.statusBarHealth.y = 5;
 
@@ -48,6 +54,10 @@ class World {
 
         this.statusBarEndboss.x = 500;
         this.statusBarEndboss.y = 10;
+    }
+
+
+    test() {
     }
 
     checkThrowObjects() {
@@ -82,7 +92,7 @@ class World {
             if (this.character.isColliding(coin)) { // continue here
                 this.character.coinCount++;
                 this.level.coins.splice(index, 1);
-                console.log('COINS:', this.character.coinCount);
+                this.statusBarCoin.setCollectibleObjectPercentage(this.character.coinCount);
 
             }
         });
@@ -92,11 +102,9 @@ class World {
         this.level.salsaBottles.forEach((bottle, index) => {
             bottle.update();
             if (this.character.isColliding(bottle)) {
-
                 this.character.salsaBottleCount++;
-
                 this.level.salsaBottles.splice(index, 1);
-                console.log('BOTTLES:', this.character.salsaBottleCount);
+                this.statusBarBottle.setCollectibleObjectPercentage(this.character.salsaBottleCount);
 
             }
         });
