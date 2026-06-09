@@ -1,5 +1,6 @@
 class ThrowableObject extends MovableObject {
 
+
     IMAGES_SALSA_BOTTLE = [
         'img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
         'img/6_salsa_bottle/bottle_rotation/2_bottle_rotation.png',
@@ -14,17 +15,21 @@ class ThrowableObject extends MovableObject {
         this.y = y - 30;
         this.height = 100;
         this.width = 60;
+        this.markedForDeletion = false;
         this.throw();
         this.animate();
     }
 
     throw() {
-        
-            this.speedY = 20;
-            this.applyGravity();
-            setInterval(() => {
-                this.x += 10;
-            }, 25);
+
+        this.speedY = 20;
+        this.applyGravity();
+        setInterval(() => {
+            this.x += 10;
+            if (this.isAboveGround() === false) {
+                this.markedForDeletion = true;
+            }
+        }, 25);
 
     }
 

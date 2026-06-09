@@ -31,6 +31,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
+            this.checkBottleCollisions();
         }, 200);
         this.checkCollectibleObjects();
 
@@ -68,7 +69,7 @@ class World {
         }
     }
 
- 
+
 
     checkCollisions() {
         this.level.enemies.forEach(enemy => {
@@ -76,6 +77,22 @@ class World {
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy);
             }
+        });
+    }
+
+    checkBottleCollisions() {
+        this.throwableObjects = this.throwableObjects.filter(
+            bottle => !bottle.markedForDeletion
+        );
+        this.throwableObjects.forEach((bottle, bottleIndex) => {
+            this.level.enemies.forEach((enemy, enemyIndex) => {
+
+                if (bottle.isColliding(enemy)) {
+                    bottle.markedForDeletion = true;
+
+                }
+
+            });
         });
     }
 
