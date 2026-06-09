@@ -39,7 +39,7 @@ class World {
     initStatusBars() {
         this.setPostionStatusBars();
         this.test();
-        
+
     }
 
     setPostionStatusBars() {
@@ -61,12 +61,14 @@ class World {
     }
 
     checkThrowObjects() {
-        if (this.keyboard.D) {
+        if (this.keyboard.D && this.character.salsaBottleCount > 0) {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
             this.throwableObjects.push(bottle);
+            this.character.salsaBottleCount--;
         }
     }
 
+ 
 
     checkCollisions() {
         this.level.enemies.forEach(enemy => {
