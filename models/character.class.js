@@ -42,7 +42,9 @@ class Character extends MovableObject {
         bottom: 10,
     };
     salsaBottleCount = 0;
+    maxSalsaBottles = 8;
     coinCount = 0;
+    maxCoins = 6;
 
     constructor() {
         super().loadImage('img/2_character_pepe/2_walk/W-21.png');

@@ -32,10 +32,22 @@ class World {
             this.checkCollisions();
             this.checkThrowObjects();
             this.checkBottleCollisions();
+            // this.updateCollectibleStatusBars();
         }, 200);
         this.checkCollectibleObjects();
 
     }
+
+    // updateCollectibleStatusBars() {
+
+    //     this.statusBarBottle.setPercentage(
+    //         (this.character.salsaBottleCount / this.character.maxBottles) * 100
+    //     );
+
+    //     this.statusBarCoin.setPercentage(
+    //         (this.character.statusBarCoin / this.character.maxCoins) * 100
+    //     );
+    // }
 
     initStatusBars() {
         this.setPostionStatusBars();
@@ -63,7 +75,7 @@ class World {
 
     checkThrowObjects() {
         if (this.keyboard.D && this.character.salsaBottleCount > 0) {
-            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100, this.character.otherDirection, this.character);
             this.throwableObjects.push(bottle);
             this.character.salsaBottleCount--;
         }
