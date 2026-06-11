@@ -23,7 +23,6 @@ class ThrowableObject extends MovableObject {
     }
 
     throw() {
-
         this.speedY = 20;
         this.applyGravity();
         setInterval(() => {
@@ -32,8 +31,6 @@ class ThrowableObject extends MovableObject {
                 this.markedForDeletion = true;
             }
         }, 25);
-            this.character.salsaBottleCount--;
-
     }
 
     animate() {

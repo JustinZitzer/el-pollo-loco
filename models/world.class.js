@@ -12,6 +12,7 @@ class World {
     throwableObjects = [];
     salsaBottleCount = 0;
     coinCount = 0;
+    lastThrow = 0;
 
     constructor(canvas, keyboard, hud) {
         this.ctx = canvas.getContext('2d');
@@ -32,22 +33,19 @@ class World {
             this.checkCollisions();
             this.checkThrowObjects();
             this.checkBottleCollisions();
-            // this.updateCollectibleStatusBars();
+            this.updateCollectibleStatusBars();
         }, 200);
         this.checkCollectibleObjects();
 
     }
 
-    // updateCollectibleStatusBars() {
+    updateCollectibleStatusBars() {
 
-    //     this.statusBarBottle.setPercentage(
-    //         (this.character.salsaBottleCount / this.character.maxBottles) * 100
-    //     );
-
-    //     this.statusBarCoin.setPercentage(
-    //         (this.character.statusBarCoin / this.character.maxCoins) * 100
-    //     );
-    // }
+        setInterval(() => {
+            this.statusBarCoin.setCollectibleObjectPercentage(this.character.coinCount);
+            this.statusBarBottle.setCollectibleObjectPercentage(this.character.salsaBottleCount);
+        }, 200); // 60 FPS
+    }
 
     initStatusBars() {
         this.setPostionStatusBars();
@@ -74,12 +72,22 @@ class World {
     }
 
     checkThrowObjects() {
-        if (this.keyboard.D && this.character.salsaBottleCount > 0) {
-            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100, this.character.otherDirection, this.character);
-            this.throwableObjects.push(bottle);
-            this.character.salsaBottleCount--;
-        }
+    let now = Date.now();
+
+    if (this.keyboard.D && this.character.salsaBottleCount > 0 && now - this.lastThrow > 500) {
+        this.lastThrow = now;
+
+        let bottle = new ThrowableObject(
+            this.character.x + 100,
+            this.character.y + 100,
+            this.character.otherDirection,
+            this.character
+        );
+
+        this.throwableObjects.push(bottle);
+        this.character.salsaBottleCount--;
     }
+}
 
 
 
