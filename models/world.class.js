@@ -8,7 +8,8 @@ class World {
     statusBarHealth = new StatusBar("health");
     statusBarBottle = new StatusBar("bottle");
     statusBarCoin = new StatusBar("coin");
-    statusBarEndboss = new StatusBar("endboss");
+    statusBarEndboss = null;
+    endbossTriggered = false;
     throwableObjects = [];
     salsaBottleCount = 0;
     coinCount = 0;
@@ -33,10 +34,23 @@ class World {
             this.checkCollisions();
             this.checkThrowObjects();
             this.checkBottleCollisions();
-            this.updateCollectibleStatusBars();
+            this.checkEndbossTrigger();
         }, 200);
+        this.updateCollectibleStatusBars();
         this.checkCollectibleObjects();
 
+    }
+
+    checkEndbossTrigger() {
+        if (this.character.x > 1300 && !this.bossTriggered) {
+            this.endbossTriggered = true;
+
+            this.statusBarEndboss = new StatusBar("endboss");
+            this.statusBarEndboss.x = 500;
+            this.statusBarEndboss.y = 10;
+
+            console.log("Boss aktiviert");
+        }
     }
 
     updateCollectibleStatusBars() {
@@ -44,7 +58,7 @@ class World {
         setInterval(() => {
             this.statusBarCoin.setCollectibleObjectPercentage(this.character.coinCount);
             this.statusBarBottle.setCollectibleObjectPercentage(this.character.salsaBottleCount);
-        }, 200); // 60 FPS
+        }, 200);
     }
 
     initStatusBars() {
@@ -63,8 +77,7 @@ class World {
         this.statusBarBottle.x = 20;
         this.statusBarBottle.y = 100;
 
-        this.statusBarEndboss.x = 500;
-        this.statusBarEndboss.y = 10;
+
     }
 
 
@@ -72,22 +85,22 @@ class World {
     }
 
     checkThrowObjects() {
-    let now = Date.now();
+        let now = Date.now();
 
-    if (this.keyboard.D && this.character.salsaBottleCount > 0 && now - this.lastThrow > 500) {
-        this.lastThrow = now;
+        if (this.keyboard.D && this.character.salsaBottleCount > 0 && now - this.lastThrow > 500) {
+            this.lastThrow = now;
 
-        let bottle = new ThrowableObject(
-            this.character.x + 100,
-            this.character.y + 100,
-            this.character.otherDirection,
-            this.character
-        );
+            let bottle = new ThrowableObject(
+                this.character.x + 100,
+                this.character.y + 100,
+                this.character.otherDirection,
+                this.character
+            );
 
-        this.throwableObjects.push(bottle);
-        this.character.salsaBottleCount--;
+            this.throwableObjects.push(bottle);
+            this.character.salsaBottleCount--;
+        }
     }
-}
 
 
 
@@ -167,7 +180,9 @@ class World {
         this.addToMap(this.statusBarHealth);
         this.addToMap(this.statusBarCoin);
         this.addToMap(this.statusBarBottle);
-        this.addToMap(this.statusBarEndboss);
+        if (this.statusBarEndboss) {
+            this.addToMap(this.statusBarEndboss);
+        }
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.enemies);
 
