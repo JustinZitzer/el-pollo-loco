@@ -49,7 +49,6 @@ class World {
             this.statusBarEndboss.x = 500;
             this.statusBarEndboss.y = 10;
 
-            console.log("Boss aktiviert");
         }
     }
 
