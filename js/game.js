@@ -8,7 +8,6 @@ function init() {
     canvas = document.getElementById('canvas');
     initLevel();
     world = new World(canvas, keyboard);
-    console.log('my charcacter is', world.character);
 }
 
 document.addEventListener("keydown", (event) => {

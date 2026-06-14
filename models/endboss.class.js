@@ -44,12 +44,12 @@ class Endboss extends MovableObject {
             }
             i++;
 
-            if (world.character.x > 720 && !this.hadFirstContact) {
+            if (world.character.x > 1300 && !this.hadFirstContact) {
                 i = 0;
                 this.hadFirstContact = true;
                 console.log(world.character.x); // not working yet
             }
-        }, 150);
+        }, 200);
     }
 
 
