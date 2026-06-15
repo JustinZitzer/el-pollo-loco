@@ -14,6 +14,8 @@ class World {
     salsaBottleCount = 0;
     coinCount = 0;
     lastThrow = 0;
+    MAX_COINS = 6;
+    MAX_SALSA_BOTTLES = 8;
 
     constructor(canvas, keyboard, hud) {
         this.ctx = canvas.getContext('2d');
@@ -30,19 +32,24 @@ class World {
     }
 
     run() {
-        setInterval(() => {
+        const loop = () => {
+
             this.checkCollisions();
             this.checkThrowObjects();
             this.checkBottleCollisions();
             this.checkEndbossTrigger();
-        }, 200);
-        this.updateCollectibleStatusBars();
-        this.checkCollectibleObjects();
 
+            this.checkCollectibleCoin();
+            this.checkCollectibleSalsaBottle();
+
+            requestAnimationFrame(loop);
+        };
+
+        loop();
     }
 
     checkEndbossTrigger() {
-        if (this.character.x > 1300 && !this.bossTriggered) {
+        if (this.character.x > 1300 && !this.endbossTriggered) {
             this.endbossTriggered = true;
 
             this.statusBarEndboss = new StatusBar("endboss");
@@ -52,13 +59,20 @@ class World {
         }
     }
 
-    updateCollectibleStatusBars() {
+    updateStatusBars() {
+        this.statusBarCoin.setPercentage(
+            (this.character.coinCount / this.MAX_COINS) * 100
+        );
 
-        setInterval(() => {
-            this.statusBarCoin.setCollectibleObjectPercentage(this.character.coinCount);
-            this.statusBarBottle.setCollectibleObjectPercentage(this.character.salsaBottleCount);
-        }, 200);
+        this.statusBarBottle.setPercentage(
+            (this.character.salsaBottleCount / this.MAX_SALSA_BOTTLES) * 100
+        );
+
+        this.statusBarHealth.setPercentage(
+            this.character.energy
+        );
     }
+
 
     initStatusBars() {
         this.setPostionStatusBars();
@@ -128,37 +142,29 @@ class World {
         });
     }
 
-    checkCollectibleObjects() {
-        setInterval(() => {
-            this.checkCollectibleCoin();
-            this.checkCollectibleSalsaBottle();
-        }, 1000 / 60);
-
-
-    }
-
     checkCollectibleCoin() {
-        this.level.coins.forEach((coin, index) => {
-            coin.update();
-            if (this.character.isColliding(coin)) { // continue here
+        this.level.coins = this.level.coins.filter((coin) => {
+            if (this.character.isColliding(coin)) {
                 this.character.coinCount++;
-                this.level.coins.splice(index, 1);
-                this.statusBarCoin.setCollectibleObjectPercentage(this.character.coinCount);
-
+                
+                return false;
             }
+            return true;
         });
+
+        this.updateStatusBars();
     }
 
     checkCollectibleSalsaBottle() {
-        this.level.salsaBottles.forEach((bottle, index) => {
-            bottle.update();
+        this.level.salsaBottles = this.level.salsaBottles.filter((bottle) => {
             if (this.character.isColliding(bottle)) {
                 this.character.salsaBottleCount++;
-                this.level.salsaBottles.splice(index, 1);
-                this.statusBarBottle.setCollectibleObjectPercentage(this.character.salsaBottleCount);
-
+                return false;
             }
+            return true;
         });
+
+        this.updateStatusBars();
     }
 
     draw() {
