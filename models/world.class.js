@@ -14,6 +14,8 @@ class World {
     salsaBottleCount = 0;
     coinCount = 0;
     lastThrow = 0;
+    lastHit = 0;
+    hitCooldown = 500;
     MAX_COINS = 6;
     MAX_SALSA_BOTTLES = 8;
 
@@ -118,11 +120,20 @@ class World {
 
 
     checkCollisions() {
+        const now = Date.now();
+
         this.level.enemies.forEach(enemy => {
-            if (this.character.isColliding(enemy)) {
+
+            if (this.character.isColliding(enemy) && now - this.lastHit > this.hitCooldown) {
+
+                this.lastHit = now;
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy);
             }
+
+
+
+
         });
     }
 
