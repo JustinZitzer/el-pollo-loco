@@ -146,7 +146,7 @@ class World {
         this.level.coins = this.level.coins.filter((coin) => {
             if (this.character.isColliding(coin)) {
                 this.character.coinCount++;
-                
+
                 return false;
             }
             return true;
@@ -213,6 +213,9 @@ class World {
     }
 
     addToMap(movableObject) {
+        if (movableObject.update) {
+            movableObject.update();
+        }
         if (movableObject.otherDirection) {
             this.flipImage(movableObject);
         }
