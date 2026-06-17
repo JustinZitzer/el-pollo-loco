@@ -118,24 +118,27 @@ class World {
     }
 
 
-
     checkCollisions() {
         const now = Date.now();
 
         this.level.enemies.forEach(enemy => {
 
-            if (this.character.isColliding(enemy) && now - this.lastHit > this.hitCooldown) {
-
-                this.lastHit = now;
-                this.character.hit();
-                this.statusBarHealth.setPercentage(this.character.energy);
+            if (this.character.isStomping(enemy)) {
+                enemy.hit();
+                this.character.speedY = 15;
+                console.log('stomp'); // todo: fix chicken dead image animation
             }
+            else if (this.character.isColliding(enemy)) {
 
-
-
-
+                if (now - this.lastHit > this.hitCooldown) {
+                    this.lastHit = now;
+                    this.character.hit();
+                    console.log('coll');
+                }
+            }
         });
     }
+
 
     checkBottleCollisions() {
         this.throwableObjects = this.throwableObjects.filter(

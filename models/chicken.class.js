@@ -16,7 +16,7 @@ class Chicken extends MovableObject {
         right: 5,
         bottom: 10,
     };
-    energy = 25;
+    energy = 100; // because of test usage increased
 
     constructor() {
         super().loadImage('img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');

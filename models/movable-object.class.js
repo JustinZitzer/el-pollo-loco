@@ -10,7 +10,6 @@ class MovableObject extends DrawableObject {
         bottom: 0,
     };
     energy = 100;
-    lastHit = 0;
 
     applyGravity() {
         setInterval(() => {
@@ -54,6 +53,13 @@ class MovableObject extends DrawableObject {
             this.x + this.offset.left < movableObject.x + movableObject.width - movableObject.offset.right && // L -> R
             this.y + this.offset.top < movableObject.y + movableObject.height - movableObject.offset.bottom; // B -> T 
     }
+
+isStomping(enemy) {
+    return this.speedY < 0 &&
+        this.y + this.height >= enemy.y &&
+        this.x < enemy.x + enemy.width &&
+        this.x + this.width > enemy.x;
+}
 
     hit() {
         this.energy -= 25;
