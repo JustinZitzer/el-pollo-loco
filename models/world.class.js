@@ -123,21 +123,24 @@ class World {
 
         this.level.enemies.forEach(enemy => {
 
+            if (enemy.isDead()) {
+                return;
+            }
+
             if (this.character.isStomping(enemy)) {
                 enemy.hit();
                 this.character.speedY = 15;
-                console.log('stomp'); // todo: fix chicken dead image animation
             }
             else if (this.character.isColliding(enemy)) {
 
                 if (now - this.lastHit > this.hitCooldown) {
                     this.lastHit = now;
                     this.character.hit();
-                    console.log('coll');
                 }
             }
         });
     }
+
 
 
     checkBottleCollisions() {
