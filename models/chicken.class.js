@@ -16,11 +16,12 @@ class Chicken extends MovableObject {
         right: 5,
         bottom: 10,
     };
-    energy = 100; // because of test usage increased
+    energy = 25; // because of test usage increased
 
     constructor() {
         super().loadImage('img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING);
+        this.loadImages(this.IMAGES_DEAD);
         this.x = 400 + Math.random() * 500;
         this.speed = 0.15 + Math.random() * 0.25;
         this.animate();
@@ -28,21 +29,26 @@ class Chicken extends MovableObject {
 
     animate() {
         setInterval(() => {
-            this.moveLeft();
+
+            if (!this.isDead()) {
+                this.moveLeft();
+            }
+
         }, 1000 / 60);
 
-         setInterval(() => {
+
+        setInterval(() => {
 
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
             } else {
-                    this.playAnimation(this.IMAGES_WALKING);
-                
+                this.playAnimation(this.IMAGES_WALKING);
             }
-        }, 100);
+
+        }, 150);
     }
 
-    
-    
+
+
 
 }

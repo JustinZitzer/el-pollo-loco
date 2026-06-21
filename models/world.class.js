@@ -148,8 +148,8 @@ class World {
             this.level.enemies.forEach((enemy, enemyIndex) => {
 
                 if (bottle.isColliding(enemy)) {
+                    enemy.hit();
                     bottle.markedForDeletion = true;
-
                 }
 
             });
