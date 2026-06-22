@@ -130,6 +130,7 @@ class World {
             if (this.character.isStomping(enemy)) {
                 enemy.hit();
                 this.character.speedY = 15;
+                return;
             }
             else if (this.character.isColliding(enemy)) {
 

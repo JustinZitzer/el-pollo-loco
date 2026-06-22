@@ -54,12 +54,30 @@ class MovableObject extends DrawableObject {
             this.y + this.offset.top < movableObject.y + movableObject.height - movableObject.offset.bottom; // B -> T 
     }
 
-isStomping(enemy) {
-    return this.speedY < 0 &&
-        this.y + this.height >= enemy.y &&
-        this.x < enemy.x + enemy.width &&
-        this.x + this.width > enemy.x;
-}
+    isCollidingCollectible(movableObject) {
+        return (
+            this.x + this.width - this.offset.right > movableObject.x + movableObject.offset.left &&
+            this.x + this.offset.left < movableObject.x + movableObject.width - movableObject.offset.right &&
+            this.y + this.height - this.offset.bottom > movableObject.y + movableObject.offset.top &&
+            this.y + this.offset.top < movableObject.y + movableObject.height - movableObject.offset.bottom
+        );
+    }
+
+    isStomping(enemy) {
+        const charBottom = this.y + this.height - this.offset.bottom;
+        const enemyTop = enemy.y + enemy.offset.top;
+
+        const horizontalCollision =
+            this.x + this.width - this.offset.right > enemy.x + enemy.offset.left &&
+            this.x + this.offset.left < enemy.x + enemy.width - enemy.offset.right;
+
+        const verticalCollision =
+            this.speedY < 0 &&
+            charBottom >= enemyTop &&
+            charBottom <= enemyTop + 25;
+
+        return horizontalCollision && verticalCollision;
+    }
 
     hit() {
         this.energy -= 25;
