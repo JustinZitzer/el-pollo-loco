@@ -11,13 +11,12 @@ class World {
     statusBarEndboss = null;
     endbossTriggered = false;
     throwableObjects = [];
-    salsaBottleCount = 0;
-    coinCount = 0;
     lastThrow = 0;
     lastHit = 0;
     hitCooldown = 500;
     MAX_COINS = 6;
     MAX_SALSA_BOTTLES = 8;
+    collisionLocked = false;
 
     constructor(canvas, keyboard, hud) {
         this.ctx = canvas.getContext('2d');
@@ -36,6 +35,8 @@ class World {
     run() {
         const loop = () => {
 
+            this.collisionLocked = false;
+
             this.checkCollisions();
             this.checkThrowObjects();
             this.checkBottleCollisions();
@@ -49,6 +50,7 @@ class World {
 
         loop();
     }
+
 
     checkEndbossTrigger() {
         if (this.character.x > 1300 && !this.endbossTriggered) {
@@ -102,7 +104,11 @@ class World {
     checkThrowObjects() {
         let now = Date.now();
 
-        if (this.keyboard.D && this.character.salsaBottleCount > 0 && now - this.lastThrow > 500) {
+        if (
+            this.keyboard.D &&
+            this.character.salsaBottleCount > 0 &&
+            now - this.lastThrow > 500
+        ) {
             this.lastThrow = now;
 
             let bottle = new ThrowableObject(
@@ -113,7 +119,10 @@ class World {
             );
 
             this.throwableObjects.push(bottle);
+
             this.character.salsaBottleCount--;
+
+            this.updateStatusBars();
         }
     }
 
@@ -129,7 +138,7 @@ class World {
 
             if (this.character.isStomping(enemy)) {
                 enemy.hit();
-                this.character.speedY = 15;
+                this.collisionLocked = true;
                 return;
             }
             else if (this.character.isColliding(enemy)) {
@@ -164,25 +173,24 @@ class World {
         this.level.coins = this.level.coins.filter((coin) => {
             if (this.character.isColliding(coin)) {
                 this.character.coinCount++;
-
+                this.updateStatusBars();
                 return false;
             }
             return true;
         });
-
-        this.updateStatusBars();
     }
 
     checkCollectibleSalsaBottle() {
         this.level.salsaBottles = this.level.salsaBottles.filter((bottle) => {
+
             if (this.character.isColliding(bottle)) {
                 this.character.salsaBottleCount++;
+                this.updateStatusBars();
                 return false;
             }
+
             return true;
         });
-
-        this.updateStatusBars();
     }
 
     draw() {
