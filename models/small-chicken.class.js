@@ -10,6 +10,12 @@ class SmallChicken extends MovableObject {
     IMAGES_DEAD = [
         'img/3_enemies_chicken/chicken_small/2_dead/dead.png',
     ];
+    offset = {
+        top: 7,
+        left: 10,
+        right: 9,
+        bottom: 10,
+    };
 
     constructor() {
         super().loadImage('img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');

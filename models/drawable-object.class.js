@@ -35,7 +35,7 @@ class DrawableObject {
         if (this instanceof Chicken && this.isDead()) {
             return;
         }
-        if (this instanceof Character || this instanceof Chicken || this instanceof Endboss || this instanceof CollectibleObject) {
+        if (this instanceof Character || this instanceof Chicken || this instanceof Endboss || this instanceof CollectibleObject || this instanceof SmallChicken) {
             ctx.beginPath();
             ctx.lineWidth = '2';
             ctx.strokeStyle = 'red';
