@@ -49,12 +49,12 @@ function initLevel() {
             new SalsaBottle('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png', 2000, 335),
         ],
         [
-            new Coin('img/8_coin/coin_1.png', 500, 335),
+            new Coin('img/8_coin/coin_1.png', 500, 250),
             new Coin('img/8_coin/coin_1.png', 1000, 335),
-            new Coin('img/8_coin/coin_1.png', 1500, 335),
+            new Coin('img/8_coin/coin_1.png', 1500, 250),
             new Coin('img/8_coin/coin_1.png', 1700, 335),
-            new Coin('img/8_coin/coin_1.png', 2100, 335),
-            new Coin('img/8_coin/coin_1.png', 2200, 335),
+            new Coin('img/8_coin/coin_1.png', 2100, 250),
+            new Coin('img/8_coin/coin_1.png', 2200, 250),
         ],
         
     );
