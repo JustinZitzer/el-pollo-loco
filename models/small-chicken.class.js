@@ -16,6 +16,7 @@ class SmallChicken extends MovableObject {
         right: 9,
         bottom: 10,
     };
+    energy = 25;
 
     constructor() {
         super().loadImage('img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
