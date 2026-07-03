@@ -32,7 +32,7 @@ class DrawableObject {
     // }
 
     drawRedFrame(ctx) {
-        if (this instanceof Chicken || this instanceof SmallChicken && this.isDead()) {
+        if (this instanceof Chicken && this.isDead() || this instanceof SmallChicken && this.isDead()) {
             return;
         }
         if (this instanceof Character || this instanceof Chicken || this instanceof Endboss || this instanceof CollectibleObject || this instanceof SmallChicken) {
