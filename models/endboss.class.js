@@ -51,6 +51,9 @@ class Endboss extends MovableObject {
         super().loadImage(this.IMAGES_SPAWNING[0]);
         this.loadImages(this.IMAGES_SPAWNING);
         this.loadImages(this.IMAGES_WALKING);
+        this.loadImages(this.IMAGES_ATTACK);
+        this.loadImages(this.IMAGES_HURT);
+        this.loadImages(this.IMAGES_DEAD);
         this.x = 1800;
         this.animate();
     }
@@ -70,7 +73,7 @@ class Endboss extends MovableObject {
                 this.hadFirstContact = true; // not working yet
             }
 
-            
+
 
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);

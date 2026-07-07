@@ -2,6 +2,7 @@ class MovableObject extends DrawableObject {
     speed = 0.15;
     otherDirection = false;
     speedY = 0;
+    groundY = 420;
     acceleration = 2;
     offset = {
         top: 0,
@@ -11,7 +12,7 @@ class MovableObject extends DrawableObject {
     };
     energy = 100;
 
-    applyGravity() {
+ applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
                 this.y -= this.speedY;
@@ -20,11 +21,12 @@ class MovableObject extends DrawableObject {
         }, 1000 / 25);
     }
 
+
     isAboveGround() {
         if (this instanceof ThrowableObject) {
             return true;
         } else {
-            return this.y < 220;
+            return this.y < this.groundY - this.height;
         }
     }
 
@@ -46,6 +48,8 @@ class MovableObject extends DrawableObject {
     jump() {
         this.speedY = 25;
     }
+
+
 
     isColliding(movableObject, offset) {
         return this.x + this.width - this.offset.right > movableObject.x + movableObject.offset.left && // Right -> Left        (from enemy to character)
