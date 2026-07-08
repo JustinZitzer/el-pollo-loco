@@ -45,7 +45,7 @@ class Endboss extends MovableObject {
         right: 10,
         bottom: 10,
     };
-    hadFirstContact = false;
+    hadFirstContact = false; // todo endboss animation fixen
 
     constructor() {
         super().loadImage(this.IMAGES_SPAWNING[0]);

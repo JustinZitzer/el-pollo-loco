@@ -136,9 +136,11 @@ class World {
                 return;
             }
 
-            if (this.character.isStomping(enemy)) {
+
+            if (this.character.isStomping(enemy) && !enemy.isHurt()) {
                 enemy.hit();
                 this.collisionLocked = true;
+
                 return;
             }
             else if (this.character.isColliding(enemy)) {
