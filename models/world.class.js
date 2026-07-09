@@ -17,6 +17,8 @@ class World {
     MAX_COINS = 6;
     MAX_SALSA_BOTTLES = 8;
     collisionLocked = false;
+    endboss = this.level.enemies.find(enemy => enemy instanceof Endboss);
+
 
     constructor(canvas, keyboard, hud) {
         this.ctx = canvas.getContext('2d');
@@ -75,6 +77,11 @@ class World {
         this.statusBarHealth.setPercentage(
             this.character.energy
         );
+
+
+        if (this.statusBarEndboss && this.endboss) {
+            this.statusBarEndboss.setPercentage(this.endboss.energy);
+        }
     }
 
 
@@ -139,6 +146,9 @@ class World {
 
             if (this.character.isStomping(enemy) && !enemy.isHurt()) {
                 enemy.hit();
+                if (enemy instanceof Endboss) {
+                    this.updateStatusBars();
+                }
                 this.collisionLocked = true;
 
                 return;
@@ -159,11 +169,15 @@ class World {
         this.throwableObjects = this.throwableObjects.filter(
             bottle => !bottle.markedForDeletion
         );
-        this.throwableObjects.forEach((bottle, bottleIndex) => {
-            this.level.enemies.forEach((enemy, enemyIndex) => {
 
-                if (bottle.isColliding(enemy)) {
+        this.throwableObjects.forEach(bottle => {
+            this.level.enemies.forEach(enemy => {
+
+                if (bottle.isColliding(enemy) && !enemy.isDead()) {
                     enemy.hit();
+                    if (enemy instanceof Endboss) {
+                        this.updateStatusBars();
+                    }
                     bottle.markedForDeletion = true;
                 }
 
@@ -196,41 +210,37 @@ class World {
     }
 
     draw() {
-        this.ctx.clearRect(0, 0, canvas.width, canvas.height)
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+        this.ctx.save();
+
+        // Welt mit Kamera
         this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToMap(this.level.backgroundObjects);
-
-
         this.addObjectsToMap(this.level.clouds);
         this.addToMap(this.character);
 
+        this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.salsaBottles);
+        this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.throwableObjects);
 
-        this.ctx.translate(-this.camera_x, 0);
-        // ------ space for fixed objects ------
+        this.ctx.restore();
 
+
+        // feste HUD Elemente
         this.addToMap(this.statusBarHealth);
         this.addToMap(this.statusBarCoin);
         this.addToMap(this.statusBarBottle);
+
         if (this.statusBarEndboss) {
             this.addToMap(this.statusBarEndboss);
         }
-        this.ctx.translate(this.camera_x, 0);
-        this.addObjectsToMap(this.level.enemies);
-
-        this.addObjectsToMap(this.level.salsaBottles);
-        this.addObjectsToMap(this.level.coins);
-
-        this.addObjectsToMap(this.throwableObjects);
 
 
-        this.ctx.translate(-this.camera_x, 0);
-
-
-        let self = this;
-        requestAnimationFrame(function () {
-            self.draw();
+        requestAnimationFrame(() => {
+            this.draw();
         });
     }
 
