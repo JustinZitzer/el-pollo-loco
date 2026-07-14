@@ -12,14 +12,18 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #F97B24;
-    background-image: url(./img/main_background_desert.png);
+    background-image: url(./img/10_background/main_background_desert.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    font-family: 'zabras', Arial, Helvetica, sans-serif;
+    font-family: 'zabars', Arial, Helvetica, sans-serif;
     color: black;
     text-shadow: 2px 2px 2px #F97B24;
     line-height: 1.5;
+}
+
+button, a {
+    font-family: inherit;
 }
 
 main {
@@ -35,6 +39,44 @@ canvas {
     display: block;
     border-radius: 10px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+}
+
+.test {
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+    width: 720px;
+    height: 480px;
+    background-image: url(./img/10_background/start_background.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.btn-start-game {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    background: linear-gradient(180deg, #ffb347 0%, #ffcc33 100%);
+    border: 3px solid #d97a00;
+    border-radius: 25px;
+    color: black;
+    font-size: 24px;
+    padding: 12px 36px;
+    box-shadow: 0 6px 0 #b35a00;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-start-game:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 #b35a00;
+    background: linear-gradient(180deg, #ffd966 0%, #ffb347 100%);
+}
+
+.btn-start-game:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 #b35a00;
 }
 
 h1 {
@@ -148,7 +190,7 @@ footer {
 }
 
 @font-face {
-    font-family: 'Zabras';
+    font-family: 'zabars';
     src: url(./fonts/zabars.ttf) format('truetype');
 }
 
