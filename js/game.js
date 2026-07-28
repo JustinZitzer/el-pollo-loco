@@ -2,7 +2,6 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 
-document.getElementById('canvas').addEventListener('click', init); // start canvas onclick level
 
 function init() {
     canvas = document.getElementById('canvas');
