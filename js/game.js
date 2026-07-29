@@ -64,7 +64,7 @@ document.addEventListener("keyup", (event) => {
 });
 
 function fullscreen() { // need to be implemented
-    let fullscreen = document.getElementById('fullscreen');
+    let fullscreen = document.getElementById('full-screen');
     openFullscreen(fullscreen);
 }
 

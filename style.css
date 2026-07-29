@@ -41,8 +41,10 @@ canvas {
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
 }
 
-.test {
-    display: block;
+.start-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
     width: 720px;
@@ -54,9 +56,8 @@ canvas {
 }
 
 .btn-start-game {
-    display: flex;
-    position: absolute;
-    top: 20px;
+    margin-left: 30px;
+    margin-bottom: 50px;
     background: linear-gradient(180deg, #ffb347 0%, #ffcc33 100%);
     border: 3px solid #d97a00;
     border-radius: 25px;
@@ -187,6 +188,14 @@ footer {
     height: 1px;
     width: 20%;
     background-color: #8F4A41;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }
 
 @font-face {

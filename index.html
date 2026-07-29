@@ -24,11 +24,12 @@
         </header>
 
         <h1>El pollo loco</h1>
-        <div class="test">
-            <button onclick="init()" class="btn-start-game">Start Game !</button>
+        <div id="start-screen" class="start-screen">
+            <button onclick="show('canvas'), hide('start-screen'), init()" class="btn-start-game">Start Game !</button>
         </div>
-        <div id="fullscreen">
-            <canvas id="canvas" width="720" height="480">
+
+        <div id="full-screen">
+            <canvas class="hide" id="canvas" width="720" height="480">
             </canvas>
         </div>
         
