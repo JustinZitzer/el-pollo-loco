@@ -3,6 +3,7 @@ class Endboss extends MovableObject {
     height = 200;
     y = 240;
     energy = 100;
+    deadJumped = false;
     IMAGES_SPAWNING = [
         'img/4_enemie_boss_chicken/2_alert/G5.png',
         'img/4_enemie_boss_chicken/2_alert/G6.png',
@@ -77,6 +78,7 @@ class Endboss extends MovableObject {
 
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
+                this.startDeadAnimation();
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
             } else if (this.isAboveGround()) { // anpassen mit attack
@@ -85,5 +87,36 @@ class Endboss extends MovableObject {
         }, 150);
     }
 
+    async startDeadAnimation() {
+        await this.playDeadAnimation();
+        if (this.deadJumped) {
+            return;
+        }
 
+        this.deadJumped = true;
+
+        let jump = setInterval(() => {
+            this.y -= 3;
+
+            if (this.y <= 180) {
+                clearInterval(jump);
+            }
+        }, 1000 / 60);
+
+        let fall = setInterval(() => {
+            this.y += 10;
+        }, 1000 / 60);
+
+
+    }
+
+    playDeadAnimation() {
+    return new Promise(resolve => {
+        this.playAnimation(this.IMAGES_DEAD);
+
+        setTimeout(() => {
+            resolve();
+        }, this.IMAGES_DEAD.length * 150);
+    });
+}
 }
