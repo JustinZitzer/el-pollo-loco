@@ -82,6 +82,10 @@ class World {
         if (this.statusBarEndboss && this.endboss) {
             this.statusBarEndboss.setPercentage(this.endboss.energy);
         }
+
+        if (this.endboss.isDead()) {
+            this.statusBarEndboss = null;
+        }
     }
 
 
