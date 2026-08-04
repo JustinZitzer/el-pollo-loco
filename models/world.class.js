@@ -43,7 +43,7 @@ class World {
             this.checkThrowObjects();
             this.checkBottleCollisions();
             this.checkEndbossTrigger();
-
+            this.moveEndboss();
             this.checkCollectibleCoin();
             this.checkCollectibleSalsaBottle();
 
@@ -53,6 +53,28 @@ class World {
         loop();
     }
 
+    moveEndboss() {
+        if (!this.endbossTriggered || !this.endboss || this.endboss.isDead()) {
+            return;
+        }
+
+        const gap = 65;
+
+        let distance = this.character.x - this.endboss.x;
+
+        if (Math.abs(distance) > gap) {
+
+            if (distance > 0) {
+                this.endboss.x += this.endboss.speed;
+                this.endboss.otherDirection = true;
+
+            } else {
+                this.endboss.x -= this.endboss.speed;
+                this.endboss.otherDirection = false;
+            }
+
+        }
+    }
 
     checkEndbossTrigger() {
         if (this.character.x > 1300 && !this.endbossTriggered) {
