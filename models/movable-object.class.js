@@ -30,10 +30,6 @@ class MovableObject extends DrawableObject {
         }
     }
 
-    isAttacking() {
-        ?????
-    }
-
     playAnimation(images) {
         let i = this.currentImage % images.length;
         let path = images[i];

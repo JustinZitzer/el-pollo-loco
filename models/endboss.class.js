@@ -63,8 +63,13 @@ class Endboss extends MovableObject {
     animate() {
         let i = 0;
         setInterval(() => {
+
+            let distance = Math.abs(world.character.x - this.x);
+
             if (i < 10) {
                 this.playAnimation(this.IMAGES_SPAWNING);
+            } else if (distance < 65) {
+                this.playAnimation(this.IMAGES_ATTACK);
             } else {
                 this.playAnimation(this.IMAGES_WALKING);
             }
@@ -82,8 +87,7 @@ class Endboss extends MovableObject {
                 this.startDeadAnimation();
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
-            } else if (this.isAboveGround()) { // anpassen mit attack
-                this.playAnimation(this.IMAGES_ATTACK);
+            } else if (this.isAttacking()) { // anpassen mit attack
             }
         }, 150);
     }
@@ -112,12 +116,12 @@ class Endboss extends MovableObject {
     }
 
     playDeadAnimation() {
-    return new Promise(resolve => {
-        this.playAnimation(this.IMAGES_DEAD);
+        return new Promise(resolve => {
+            this.playAnimation(this.IMAGES_DEAD);
 
-        setTimeout(() => {
-            resolve();
-        }, this.IMAGES_DEAD.length * 150);
-    });
-}
+            setTimeout(() => {
+                resolve();
+            }, this.IMAGES_DEAD.length * 150);
+        });
+    }
 }

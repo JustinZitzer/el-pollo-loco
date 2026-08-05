@@ -18,7 +18,7 @@ class World {
     MAX_SALSA_BOTTLES = 8;
     collisionLocked = false;
     endboss = this.level.enemies.find(enemy => enemy instanceof Endboss);
-
+    gap = 65;
 
     constructor(canvas, keyboard, hud) {
         this.ctx = canvas.getContext('2d');
@@ -58,11 +58,10 @@ class World {
             return;
         }
 
-        const gap = 65;
-
         let distance = this.character.x - this.endboss.x;
 
-        if (Math.abs(distance) > gap) {
+
+        if (Math.abs(distance) > this.gap) {
 
             if (distance > 0) {
                 this.endboss.x += this.endboss.speed;
