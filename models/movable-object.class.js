@@ -11,6 +11,8 @@ class MovableObject extends DrawableObject {
         bottom: 0,
     };
     energy = 100;
+    lastStomp = 0;
+    stompCooldown = 1000;
 
     applyGravity() {
         setInterval(() => {
@@ -68,6 +70,12 @@ class MovableObject extends DrawableObject {
     }
 
     isStomping(enemy) {
+        let timePassed = new Date().getTime() - this.lastStomp;
+
+        if (timePassed < this.stompCooldown) {
+            return false;
+        }
+
         const charBottom = this.y + this.height - this.offset.bottom;
         const enemyTop = enemy.y + enemy.offset.top;
 
@@ -80,7 +88,12 @@ class MovableObject extends DrawableObject {
             charBottom >= enemyTop &&
             charBottom <= enemyTop + 25;
 
-        return horizontalCollision && verticalCollision;
+        if (horizontalCollision && verticalCollision) {
+            this.lastStomp = new Date().getTime();
+            return true;
+        }
+
+        return false;
     }
 
     hit() {
