@@ -67,10 +67,16 @@ class Endboss extends MovableObject {
             let distance = Math.abs(world.character.x - this.x);
 
             if (i < 10) {
+                this.spawning = true;
                 this.playAnimation(this.IMAGES_SPAWNING);
+
             } else if (distance < 65) {
+
                 this.playAnimation(this.IMAGES_ATTACK);
+
             } else {
+                this.spawning = false;
+
                 this.playAnimation(this.IMAGES_WALKING);
             }
             i++;
@@ -87,7 +93,6 @@ class Endboss extends MovableObject {
                 this.startDeadAnimation();
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
-            } else if (this.isAttacking()) { // anpassen mit attack
             }
         }, 150);
     }

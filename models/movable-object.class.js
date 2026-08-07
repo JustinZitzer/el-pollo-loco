@@ -51,8 +51,6 @@ class MovableObject extends DrawableObject {
         this.speedY = 25;
     }
 
-
-
     isColliding(movableObject, offset) {
         return this.x + this.width - this.offset.right > movableObject.x + movableObject.offset.left && // Right -> Left        (from enemy to character)
             this.y + this.height - this.offset.bottom > movableObject.y + movableObject.offset.top && // Top -> Bottom 

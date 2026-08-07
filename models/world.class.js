@@ -19,6 +19,8 @@ class World {
     collisionLocked = false;
     endboss = this.level.enemies.find(enemy => enemy instanceof Endboss);
     gap = 65;
+    attack = false;
+    spawning = false;
 
     constructor(canvas, keyboard, hud) {
         this.ctx = canvas.getContext('2d');
@@ -54,7 +56,7 @@ class World {
     }
 
     moveEndboss() {
-        if (!this.endbossTriggered || !this.endboss || this.endboss.isDead()) {
+        if (!this.endbossTriggered || !this.endboss || this.endboss.isDead() || this.endboss.spawning) {
             return;
         }
 
