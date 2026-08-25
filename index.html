@@ -16,31 +16,36 @@
             <div class="header-left-section">
                 <img class="header-salsa-bottle" src="./img/6_salsa_bottle/salsa_bottle.png" alt="salsa bottle">
             </div>
+            <h1>El pollo loco</h1>
             <div class="header-right-section">
                 <img class="header-coin" src="./img/8_coin/coin_1.png" alt="coin">
                 <img class="header-second-coin" src="./img/8_coin/coin_2.png" alt="second coin">
             </div>
 
+
         </header>
 
-        <h1>El pollo loco</h1>
-        <div id="game-over-screen" class="game-over-screen">
-            <div>
-                <p class="game-over-text">!GAME OVER!</p>
-            </div>
-            <!-- implement var overlay -->
-            <div>
-                <button onclick="show('canvas'), hide('game-over-screen'), init()" class="btn-start-game">Restart
-                    Game!</button>
-            </div>
-        </div>
-        <!-- <div id="start-screen" class="start-screen">
-            <button onclick="show('canvas'), hide('start-screen'), init()" class="btn-start-game">Start Game !</button>
-        </div> -->
+
+
 
         <div id="full-screen">
             <canvas class="hide" id="canvas" width="720" height="480">
             </canvas>
+
+            <!-- <div id="start-screen" class="start-screen">
+            <button onclick="show('canvas'), hide('start-screen'), init()" class="btn-start-game">Start Game !</button>
+        </div> -->
+
+            <div id="game-over-screen" class="game-over-screen">
+                <div class="game-over-screen-wrapper">
+                    <p class="game-over-text">!GAME OVER!</p>
+                </div>
+                <!-- implement var overlay -->
+                <div>
+                    <button onclick="show('canvas'), hide('game-over-screen'), init()" class="btn-start-game">Restart
+                        Game!</button>
+                </div>
+            </div>
         </div>
 
         <footer>
