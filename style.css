@@ -79,11 +79,16 @@ canvas {
 .game-over-text {
     display: flex;
     justify-content: flex-start;
-    font-size: 34px;
-    transform: rotate(-15deg)
+    font-size: 64px;
+    transform: rotate(-4deg);
+    padding-top: 72px;
+    padding-right: 24px;
 }
 
 .btn-start-game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: linear-gradient(180deg, #FCAD51 0%, #FCAD51 100%);
     border: 3px solid #EE8B4F;
     border-radius: 25px;
@@ -93,6 +98,7 @@ canvas {
     box-shadow: 0 6px 0 #D55D3B;
     cursor: pointer;
     transition: all 0.2s ease;
+    height: 30%;
 }
 
 .btn-start-game:hover {
