@@ -48,6 +48,7 @@ class World {
             this.moveEndboss();
             this.checkCollectibleCoin();
             this.checkCollectibleSalsaBottle();
+            this.showNewScreen();
 
             requestAnimationFrame(loop);
         };
@@ -97,9 +98,14 @@ class World {
             (this.character.salsaBottleCount / this.MAX_SALSA_BOTTLES) * 100
         );
 
-        this.statusBarHealth.setPercentage(
-            this.character.energy
-        );
+
+        if (this.character) {
+            this.statusBarHealth.setPercentage(
+                this.character.energy
+            );
+        } else {
+            showNewScreen();
+        }
 
 
         if (this.statusBarEndboss && this.endboss) {
@@ -114,7 +120,6 @@ class World {
 
     initStatusBars() {
         this.setPostionStatusBars();
-        this.test();
 
     }
 
@@ -131,8 +136,15 @@ class World {
 
     }
 
-
-    test() {
+    showNewScreen() {
+        console.log(this.character.energy);
+        
+        if (this.character.energy == 0) {
+            console.log('test');
+            
+            show('game-over-screen');
+            hide('canvas');
+        }
     }
 
     checkThrowObjects() {
