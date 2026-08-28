@@ -77,8 +77,9 @@ canvas {
 }
 
 .game-over-text {
-    display: flex;
-    justify-content: flex-start;
+    position: absolute;
+    left: 40%;
+    transform: translateX(-50%);
     font-size: 64px;
     transform: rotate(-4deg);
     padding-top: 72px;
@@ -86,6 +87,9 @@ canvas {
 }
 
 .btn-start-game {
+    position: absolute;
+    left: 42%;
+    top: 44%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,7 +102,7 @@ canvas {
     box-shadow: 0 6px 0 #D55D3B;
     cursor: pointer;
     transition: all 0.2s ease;
-    height: 30%;
+    height: 5%;
 }
 
 .btn-start-game:hover {

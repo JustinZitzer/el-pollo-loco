@@ -32,16 +32,13 @@
             <canvas class="hide" id="canvas" width="720" height="480">
             </canvas>
 
-            <!-- <div id="start-screen" class="start-screen">
-            <button onclick="show('canvas'), hide('start-screen'), init()" class="btn-start-game">Start Game !</button>
-        </div> -->
-
-            <div id="game-over-screen" class="game-over-screen">
+            <div id="start-screen" class="start-screen">
+                <button onclick="show('canvas'), hide('start-screen'), init()" class="btn-start-game">Start Game
+                    !</button>
+            </div>
+            <div id="game-over-screen" class="game-over-screen hide">
                 <div class="game-over-screen-wrapper">
                     <p class="game-over-text">!GAME OVER!</p>
-                </div>
-                <!-- implement var overlay -->
-                <div>
                     <button onclick="show('canvas'), hide('game-over-screen'), init()" class="btn-start-game">Restart
                         Game!</button>
                 </div>
@@ -75,6 +72,7 @@
     <script src="./models/keyboard.class.js"></script>
     <script src="./levels/level1.js"></script>
     <script src="./js/game.js"></script>
+    <script src="./templates/templates.js"></script>
     <script src="./script.js"></script>
 </body>
 

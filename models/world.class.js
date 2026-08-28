@@ -21,6 +21,7 @@ class World {
     gap = 65;
     attack = false;
     spawning = false;
+    newScreen = false;
 
     constructor(canvas, keyboard, hud) {
         this.ctx = canvas.getContext('2d');
@@ -139,9 +140,9 @@ class World {
     showNewScreen() {
         console.log(this.character.energy);
         
-        if (this.character.energy == 0) {
+        if (this.character.energy == 0 && this.newScreen == false) {
             console.log('test');
-            
+            this.newScreen = true;
             show('game-over-screen');
             hide('canvas');
         }
