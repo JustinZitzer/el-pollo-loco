@@ -21,7 +21,7 @@ class World {
     gap = 65;
     attack = false;
     spawning = false;
-    newScreen = false;
+    gameOverScreen = false;
 
     constructor(canvas, keyboard, hud) {
         this.ctx = canvas.getContext('2d');
@@ -49,7 +49,8 @@ class World {
             this.moveEndboss();
             this.checkCollectibleCoin();
             this.checkCollectibleSalsaBottle();
-            this.showNewScreen();
+            this.showGameOverScreen();
+            this.showWinScreen();
 
             requestAnimationFrame(loop);
         };
@@ -105,7 +106,7 @@ class World {
                 this.character.energy
             );
         } else {
-            showNewScreen();
+            showGameOverScreen();
         }
 
 
@@ -137,16 +138,22 @@ class World {
 
     }
 
-    showNewScreen() {
-        console.log(this.character.energy);
-        
-        if (this.character.energy == 0 && this.newScreen == false) {
-            console.log('test');
-            this.newScreen = true;
+    showGameOverScreen() {
+        if (this.character.energy == 0 && this.gameOverScreen == false) {
+            this.gameOverScreen = true;
             show('game-over-screen');
             hide('canvas');
         }
     }
+
+    showWinScreen() {
+        if (this.endboss.isDead()) {
+            setInterval(() => {
+                show('win-screen');
+                hide('canvas');
+            }, 2000);
+        }
+    } // need to fix bug with showing screens to fast??
 
     checkThrowObjects() {
         let now = Date.now();
