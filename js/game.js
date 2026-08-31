@@ -5,6 +5,11 @@ let keyboard = new Keyboard();
 
 function init() {
     canvas = document.getElementById('canvas');
+
+    if (world) {
+        world.stopGame();
+    }
+
     initLevel();
     world = new World(canvas, keyboard);
 }

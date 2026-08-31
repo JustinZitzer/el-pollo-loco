@@ -4,6 +4,7 @@ class World {
     ctx;
     keyboard;
     level = level1;
+    gameStopped = false;
     camera_x = 0;
     statusBarHealth = new StatusBar("health");
     statusBarBottle = new StatusBar("bottle");
@@ -22,6 +23,7 @@ class World {
     attack = false;
     spawning = false;
     gameOverScreen = false;
+    winScreen = false;
 
     constructor(canvas, keyboard, hud) {
         this.ctx = canvas.getContext('2d');
@@ -39,6 +41,10 @@ class World {
 
     run() {
         const loop = () => {
+
+            if (this.gameStopped) {
+                return;
+            }
 
             this.collisionLocked = false;
 
@@ -139,7 +145,7 @@ class World {
     }
 
     showGameOverScreen() {
-        if (this.character.energy == 0 && this.gameOverScreen == false) {
+        if (this.character.energy == 0 && !this.gameOverScreen) {
             this.gameOverScreen = true;
             show('game-over-screen');
             hide('canvas');
@@ -147,13 +153,14 @@ class World {
     }
 
     showWinScreen() {
-        if (this.endboss.isDead()) {
-            setInterval(() => {
+        if (this.endboss.isDead() && !this.winScreen) {
+            this.winScreen = true
+            setTimeout(() => {
                 show('win-screen');
                 hide('canvas');
             }, 2000);
         }
-    } // need to fix bug with showing screens to fast??
+    }
 
     checkThrowObjects() {
         let now = Date.now();
@@ -257,6 +264,10 @@ class World {
     }
 
     draw() {
+        if (this.gameStopped) {
+            return;
+        }
+
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.ctx.save();
@@ -324,4 +335,8 @@ class World {
         movableObject.x = movableObject.x * -1;
         this.ctx.restore();
     }
-}
+
+    stopGame() {
+        this.gameStopped = true;
+    }
+} 
