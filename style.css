@@ -1,5 +1,4 @@
 * {
-    height: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,6 +19,7 @@ body {
     color: black;
     text-shadow: 2px 2px 2px #F97B24;
     line-height: 1.5;
+    padding-top: 417px;
 }
 
 button,
@@ -34,6 +34,7 @@ main {
     justify-content: center;
     width: 100%;
     height: 480px;
+    padding-bottom: 417px;
 }
 
 canvas {
