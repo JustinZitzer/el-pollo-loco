@@ -24,7 +24,7 @@ class SmallChicken extends MovableObject {
         this.x = 400 + Math.random() * 300;
         this.speed = 0.5;
 
-        this.y = this.groundY - this.height;
+        this.y = 360;
 
         this.applyGravity();
         this.animate();

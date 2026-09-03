@@ -80,8 +80,8 @@ canvas {
 
 .game-over-text {
     position: absolute;
-    left: 44%;
-    transform: translateX(-50%);
+    left: 42%;
+    transform: translateX(-30%);
     font-size: 64px;
     transform: rotate(-4deg);
     padding-top: 72px;

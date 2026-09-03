@@ -4,6 +4,7 @@ body {
     align-items: unset;
     padding-bottom: 42px;
     background-color: #914517;
+    padding-top: 0px !important;
 }
 
 .legal-notice-main-container {
