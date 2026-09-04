@@ -33,20 +33,23 @@
             </canvas>
 
             <div id="start-screen" class="start-screen">
-                <button onclick="show('canvas'), hide('start-screen'), init()" class="btn-start-game">Start Game
+                <button onkeydown="if (event.key === 'Enter') show('canvas'), hide('start-screen'), init()"
+                    onclick="show('canvas'), hide('start-screen'), init()" class="btn-start-game">Start Game
                     !</button>
             </div>
             <div id="game-over-screen" class="game-over-screen hide">
                 <div class="game-over-screen-wrapper">
                     <p class="game-over-text">!GAME OVER!</p>
-                    <button onclick="show('canvas'), hide('game-over-screen'), init()" class="btn-start-game">Restart
+                    <button onkeydown="if (event.key === 'Enter') show('canvas'), hide('game-over-screen'), init()"
+                        onclick="show('canvas'), hide('game-over-screen'), init()" class="btn-start-game">Restart
                         Game!</button>
                 </div>
             </div>
             <div id="win-screen" class="win-screen hide">
                 <div class="win-screen-wrapper">
                     <p class="win-text">!YOU WON!</p>
-                    <button onclick="show('canvas'), hide('win-screen'), init()" class="btn-start-game">Restart
+                    <button onkeydown="if (event.key === 'Enter') show('canvas'), hide('win-screen'), init()"
+                        onclick="show('canvas'), hide('win-screen'), init()" class="btn-start-game">Restart
                         Game!</button>
                 </div>
             </div>

@@ -15,6 +15,9 @@ function init() {
 }
 
 document.addEventListener("keydown", (event) => {
+    
+    console.log(event.keyCode);
+    
 
     if (event.keyCode == 39) {
         keyboard.RIGHT = true;
@@ -38,6 +41,10 @@ document.addEventListener("keydown", (event) => {
 
     if (event.keyCode == 68) {
         keyboard.D = true;
+    }
+
+    if (event.keyCode == 13) {
+        keyboard.ENTER = true;
     }
 
 });
@@ -65,6 +72,10 @@ document.addEventListener("keyup", (event) => {
 
     if (event.keyCode == 68) {
         keyboard.D = false;
+    }
+
+    if (event.keyCode == 13) {
+        keyboard.ENTER = false;
     }
 });
 

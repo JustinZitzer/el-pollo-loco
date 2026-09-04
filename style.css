@@ -332,6 +332,12 @@ footer {
 
 /* animation: juicyIdle 450ms forwards ease-out;            alternative animation salsa bottle             */
 
+@media screen and (max-width: 1299px) {
+    .game-over-screen {
+        width: 100%; // fix screen going invisible !!!!!
+    }
+}
+
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
