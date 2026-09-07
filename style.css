@@ -332,9 +332,41 @@ footer {
 
 /* animation: juicyIdle 450ms forwards ease-out;            alternative animation salsa bottle             */
 
-@media screen and (max-width: 1299px) {
+@media only screen and (max-width: 1299px) {
     .game-over-screen {
-        width: 100%; // fix screen going invisible !!!!!
+        width: 100%; /*fix screen going invisible !!!!!*/
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    h1 {
+        font-size: 48px;
+        padding-top: 40px;
+    }
+
+    .header-right-section {
+        margin-top: 44px;
+    }
+
+    .header-coin {
+        width: 100px;
+        height: 100px;
+        margin-right: 1px;
+    }
+
+    .header-second-coin {
+        width: 100px;
+        height: 100px;
+        margin-top: -20px;
+    }
+
+    .header-left-section {
+        margin-top: 18px;
+    }
+
+    .header-salsa-bottle {
+        width: 100px;
+        height: 100px;
     }
 }
 
