@@ -370,6 +370,39 @@ footer {
     }
 }
 
+@media only screen and (max-width: 429px) {
+    h1 {
+        font-size: 26px;
+        margin-top: 18px;
+    }
+
+    .header-right-section {
+        margin-top: 54px;
+        margin-right: 4px;
+    }
+
+    .header-coin {
+        width: 80px;
+        height: 80px;
+        margin-right: 1px;
+    }
+
+    .header-second-coin {
+        width: 80px;
+        height: 80px;
+        margin-top: -20px;
+    }
+
+    .header-left-section {
+        margin-top: 18px;
+    }
+
+    .header-salsa-bottle {
+        width: 80px;
+        height: 80px;
+    }
+}
+
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
