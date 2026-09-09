@@ -332,9 +332,28 @@ footer {
 
 /* animation: juicyIdle 450ms forwards ease-out;            alternative animation salsa bottle             */
 
-@media only screen and (max-width: 1299px) {
+@media only screen and (max-width: 1299px) {le !!!!!*/
+    }
+
+@media only screen and (max-width: 720px) {
+    canvas {
+        width: 100%;
+    }
+
+    #full-screen {
+        width: 100vw;
+    }
+
+    .start-screen {
+        width: 100vw;
+    }
+
     .game-over-screen {
-        width: 100%; /*fix screen going invisible !!!!!*/
+        width: 100vw;
+    }
+
+    .win-screen {
+        width: 100vw;
     }
 }
 
@@ -372,8 +391,8 @@ footer {
 
 @media only screen and (max-width: 429px) {
     h1 {
-        font-size: 26px;
-        margin-top: 18px;
+        font-size: 42px;
+        margin-top: 8px;
     }
 
     .header-right-section {
@@ -403,12 +422,6 @@ footer {
     }
 }
 
-@media only screen and (max-width: 720px) {
-    canvas {
-        width: 100%;
-    }
-}
-
 @media only screen and (max-height: 480px) {
     canvas {
         height: 100vh;
@@ -416,5 +429,18 @@ footer {
 
     h1 {
         display: none;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    h1 {
+        font-size: 36px;
+    }
+}
+
+@media only screen and (max-width: 330px) {
+    h1 {
+        font-size: 30px;
+        margin-top: 14px;
     }
 }
