@@ -332,28 +332,28 @@ footer {
 
 /* animation: juicyIdle 450ms forwards ease-out;            alternative animation salsa bottle             */
 
-@media only screen and (max-width: 1299px) {le !!!!!*/
-    }
-
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
     }
 
     #full-screen {
-        width: 100vw;
+        width: 100%;
     }
 
     .start-screen {
-        width: 100vw;
+        width: 100%;
+        background-size: contain;
     }
 
     .game-over-screen {
-        width: 100vw;
+        width: 100%;
+        background-size: contain;
     }
 
     .win-screen {
-        width: 100vw;
+        width: 100%;
+        background-size: contain;
     }
 }
 
