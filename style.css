@@ -131,6 +131,8 @@ canvas {
     cursor: pointer;
     transition: all 0.2s ease;
     height: 5%;
+    font-size: clamp(16px, 3vw, 24px);
+    padding: clamp(1px, 2vw, 12px) clamp(18px, 5vw, 36px);
 }
 
 .btn-start-game:hover {
