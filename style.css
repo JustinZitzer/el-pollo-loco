@@ -334,6 +334,30 @@ footer {
 
 /* animation: juicyIdle 450ms forwards ease-out;            alternative animation salsa bottle             */
 
+@media only screen and (max-width: 899px) {
+    .game-over-text {
+        display: flex;
+        justify-content: center;
+        position: unset;
+        left: unset;
+        padding-left: 78px;
+        padding-right: unset;
+        font-size: 48px;
+        width: 98%;
+    }
+
+    .win-text {
+        display: flex;
+        justify-content: center;
+        position: unset;
+        left: unset;
+        padding-left: 78px;
+        padding-right: unset;
+        font-size: 48px;
+        width: 98%;
+    }
+}
+
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
@@ -389,6 +413,16 @@ footer {
         width: 100px;
         height: 100px;
     }
+
+    .game-over-text {
+        padding-top: 124px;
+        font-size: 36px;
+    }
+
+    .win-text {
+        padding-top: 124px;
+        font-size: 36px;
+    }
 }
 
 @media only screen and (max-width: 429px) {
@@ -438,6 +472,17 @@ footer {
     h1 {
         font-size: 36px;
     }
+
+    .game-over-text {
+        font-size: 24px;
+        padding-top: 146px;
+    }
+
+    .win-text {
+        font-size: 24px;
+        padding-top: 146px;
+    }
+
 }
 
 @media only screen and (max-width: 330px) {
