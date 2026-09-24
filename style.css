@@ -225,6 +225,37 @@ header {
     animation-delay: 0.5s;
 }
 
+.btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 110%;
+    padding-right: 10px;
+}
+
+.btn-open-keyboard-help {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #FCAD51 0%, #FCAD51 100%);
+    border: 3px solid #EE8B4F;
+    border-radius: 25px;
+    color: black;
+    font-size: 24px;
+    padding: 12px 8px;
+    box-shadow: 0 6px 0 #D55D3B;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    height: 5%;
+    font-size: clamp(16px, 3vw, 24px);
+}
+
+.btn-open-keyboard-help:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 #b35a00;
+    background: linear-gradient(180deg, #ffd966 0%, #ffb347 100%);
+}
+
 footer {
     position: fixed;
     bottom: 0;
