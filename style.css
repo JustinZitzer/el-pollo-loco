@@ -256,6 +256,23 @@ header {
     background: linear-gradient(180deg, #ffd966 0%, #ffb347 100%);
 }
 
+.overlay-keyboard-help {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #FCAD51 0%, #FCAD51 100%);
+    border: 3px solid #EE8B4F;
+    border-radius: 25px;
+    color: black;
+    font-size: 24px;
+    padding: 12px 8px;
+    box-shadow: 0 6px 0 #D55D3B;
+    transition: all 0.2s ease;
+    height: 300px;
+    width: 275px;
+    font-size: clamp(16px, 3vw, 24px);
+}
+
 footer {
     position: fixed;
     bottom: 0;
